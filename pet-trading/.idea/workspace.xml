@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f19f9ae-1a5e-4f1f-b206-b2abc9101c6a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/chunk-vendors.0ce7a8ed.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/app.ed8da776.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/app.ed8da776.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-078976b1.7035ad1d.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-078976b1.7035ad1d.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-0a164a50.d8212e9d.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-0a164a50.d8212e9d.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-0cf43a64.67845acb.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-0cf43a64.67845acb.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-0e5ec77d.70787634.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-0e5ec77d.70787634.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-14a5694a.232beade.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-14a5694a.232beade.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-1f1e5e93.82cb471d.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-1f1e5e93.82cb471d.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-2e92d2e8.2077f702.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-2e92d2e8.2077f702.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-2e9c75bc.4a535e74.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-2e9c75bc.4a535e74.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-3dbe4055.bf51ebf6.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-3dbe4055.bf51ebf6.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-42780c27.418f62cd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-42780c27.418f62cd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-494cc75c.0075d346.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-494cc75c.0075d346.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-495089cb.a1ceb385.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-495089cb.a1ceb385.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-502637c1.5db8ed9b.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-502637c1.5db8ed9b.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-5d89edc2.40e54ce6.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-5d89edc2.40e54ce6.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-644146d9.21bcf0fd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-644146d9.21bcf0fd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-709ed59c.f2a1b509.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-709ed59c.f2a1b509.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-71aa3a16.5ccc4777.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-71aa3a16.5ccc4777.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-7c621c30.a9950117.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-7c621c30.a9950117.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-a88dd0c6.619cf495.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-a88dd0c6.619cf495.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-aed1aad6.0fad0d83.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-aed1aad6.0fad0d83.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-c3240f1e.d6eadc3b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-c3240f1e.d6eadc3b.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-de03bb68.ca5c83dc.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-de03bb68.ca5c83dc.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-fb570b40.9ce0d591.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-fb570b40.9ce0d591.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/js/chunk-vendors.a53d9461.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/chunk-vendors.a53d9461.js.map" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="F:/apache-maven-3.6.1-bin/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="F:\apache-maven-3.6.1-bin\apache-maven-3.6.1\conf\setting2.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="jdkForImporter" value="1.8" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="29gwkBXeRBiMGSaM2NXqae4BTYO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="PetTradingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="pet-trading" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.PetTradingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f19f9ae-1a5e-4f1f-b206-b2abc9101c6a" name="Default Changelist" comment="" />
+      <created>1653548176742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653548176742</updated>
+      <workItem from="1653548179453" duration="3760000" />
+      <workItem from="1653570968872" duration="4363000" />
+      <workItem from="1653612931213" duration="5823000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

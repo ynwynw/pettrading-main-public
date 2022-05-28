@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.PetMapper">
+
+    <delete id="deletePet" parameterType="map">
+        delete from pet
+        <where>
+            <choose>
+                <when test="pid != NULL">pid=#{pid}</when>
+                <otherwise>uid=#{uid}</otherwise>
+            </choose>
+        </where>
+    </delete>
+
+    <update id="updatePet" parameterType="pet">
+        update pet
+        <set>
+            <if test="petname != null">petname=#{petname},</if>
+            <if test="sex != null">sex=#{sex},</if>
+            <if test="bkid != null">bkid=#{bkid},</if>
+            <if test="skid != null">skid=#{skid},</if>
+            <if test="uid != null">uid=#{uid},</if>
+            <if test="age != null">age=#{age},</if>
+            <if test="price != null">price=#{price},</if>
+            <if test="pk != null">pk=#{pk},</if>
+            <if test="description != null">description=#{description}</if>
+        </set>
+        where pid=#{pid}
+    </update>
+
+    <!--根据名字模糊查询-->
+    <select id="queryPetByName" resultType="pet">
+        select * from pet where petname LIKE "%"#{petname}"%"
+    </select>
+
+    <!--查询所有宠物，可加入uid等条件-->
+    <select id="queryAllPet" parameterType="map" resultMap="petMapper">
+        select * from pet
+        <where>
+            <if test="uid != null">uid=#{uid}</if>
+            <if test="pk != null">and pk=#{pk}</if>
+        </where>
+    </select>
+
+    <select id="queryPetById" resultMap="petMapper">
+        select p.pid,petname,p.sex,age,price,pk,description,p.date,b.bkid,b.bkindname,s.skid,s.skindname,u.uid,u.avatar,u.username,ph.url
+        from pet p,bkind b,skind s,user u,photo ph
+        where p.pid=#{pid} and p.skid=s.skid and p.bkid=b.bkid and p.uid=u.uid and s.bkid=b.bkid and p.pid=ph.pid
+    </select>
+
+    <!--分页查询-->
+    <resultMap id="petMapper" type="pet">
+        <id property="pid" column="pid"></id>
+        <result property="petname" column="petname"></result>
+        <result property="sex" column="sex"></result>
+        <result property="age" column="age"></result>
+        <result property="price" column="price"></result>
+        <result property="pk" column="pk"></result>
+        <result property="description" column="description"></result>
+        <result property="date" column="date"></result>
+        <result property="uid" column="uid"></result>
+        <result property="bkid" column="bkid"></result>
+        <result property="skid" column="skid"></result>
+        <association property="bkind" javaType="bkind">
+            <id property="bkid" column="bkid"/>
+            <result property="bkindname" column="bkindname"/>
+        </association>
+        <association property="skind" javaType="skind">
+            <id property="skid" column="skid"/>
+            <result property="skindname" column="skindname"/>
+        </association>
+        <association property="user" javaType="user">
+            <id property="uid" column="uid"/>
+            <result property="avatar" column="avatar"/>
+            <result property="username" column="username"/>
+        </association>
+        <collection property="photo" ofType="photo" select="selectphoto" column="pid">
+        </collection>
+    </resultMap>
+
+    <select id="queryPetpage" resultMap="petMapper" parameterType="map">
+        select *
+        from
+        (select p.pid,p.uid,petname,p.sex,age,price,pk,p.date,p.bkid,p.skid,description,b.bkindname,s.skindname,u.username
+        from pet p,bkind b,skind s,user u
+        <where>
+            p.skid=s.skid and s.bkid=b.bkid and p.bkid=b.bkid and u.uid=p.uid
+            <if test="pid != null">and p.pid=#{pid}</if>
+            <if test="uid != null">and p.uid=#{uid}</if>
+            <if test="pk != null">and p.pk=#{pk}</if>
+            <choose>
+              <when test="skid != null">and s.skid=#{skid}</when>
+              <when test="bkid != null">and b.bkid=#{bkid}</when>
+              <otherwise></otherwise>
+            </choose>
+            <if test="age != null">and p.age = #{age}</if>
+            <if test="maxprice != null">and p.price &lt;= #{maxprice}</if>
+            <if test="price != null">and p.price = #{price}</if>
+            <if test="petname != null">and petname LIKE "%"#{petname}"%"</if>
+            <if test="date != null">and DATE_FORMAT(date,'%Y-%m-%d') = #{date}</if>
+        </where>
+        <choose>
+            <when test="sort != null">order by ${sort}</when>
+            <otherwise>order by p.pid</otherwise>
+        </choose>
+        limit #{min},#{max}) sp
+        left outer join photo ph on sp.pid=ph.pid
+    </select>
+
+    <select id="selectphoto" resultType="photo">
+      SELECT * FROM photo WHERE pid=#{pid}
+    </select>
+
+    <!--查询宠物总条目数-->
+    <select id="querypetcount" resultType="int" parameterType="map">
+        select count(*) from pet
+        <where>
+            <if test="pid != null">pid=#{pid}</if>
+            <if test="uid != null">uid=#{uid}</if>
+            <if test="pk != null">pk=#{pk}</if>
+            <if test="age != null">and age like #{age}</if>
+            <choose>
+                <when test="skid != null">and skid=#{skid}</when>
+                <when test="bkid != null">and bkid=#{bkid}</when>
+                <otherwise></otherwise>
+            </choose>
+            <if test="petname != null">and petname LIKE "%"#{petname}"%"</if>
+            <if test="price != null">and p.price = #{price}</if>
+            <if test="date != null">and DATE_FORMAT(date,'%Y-%m-%d') = #{date}</if>
+        </where>
+    </select>
+</mapper>

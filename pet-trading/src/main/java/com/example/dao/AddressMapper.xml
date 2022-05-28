@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.AddressMapper">
+
+    <delete id="deleteAddress" parameterType="map">
+        delete from address
+        <where>
+            <if test="aid != null">aid=#{aid}</if>
+            <if test="uid != null">and uid=#{uid}</if>
+        </where>
+    </delete>
+
+    <update id="updateAddress" parameterType="address">
+        update address
+        <set>
+            <if test="phone != null">phone=#{phone},</if>
+            <if test="address != null">address=#{address},</if>
+            <if test="username != null">username=#{username}</if>
+        </set>
+        where aid=#{aid}
+    </update>
+
+    <select id="queryAddress" parameterType="map" resultType="address">
+        select * from address
+        <where>
+            <if test="uid != null">uid=#{uid}</if>
+            <if test="aid != null">and aid=#{aid}</if>
+            <if test="username != null">and username=#{username}</if>
+            <if test="address != null">and address like "%"#{address}"%"</if>
+            <if test="phone != null">and phone=#{phone}</if>
+        </where>
+        order by aid
+        <if test="min != null">
+            limit #{min},#{max}
+        </if>
+    </select>
+
+    <select id="countaddress" parameterType="map" resultType="int">
+        select count(*) from address
+        <where>
+            <if test="uid != null">uid=#{uid}</if>
+            <if test="aid != null">and aid=#{aid}</if>
+            <if test="username != null">and username=#{username}</if>
+            <if test="address != null">and address like "%"#{address}"%"</if>
+            <if test="phone != null">and phone=#{phone}</if>
+        </where>
+    </select>
+</mapper>

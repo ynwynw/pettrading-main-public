@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.ContactMapper">
+    <delete id="deleteContact" parameterType="map">
+        delete from contact
+        <where>
+            <if test="cid != null">cid=#{cid}</if>
+            <if test="fromuid != null">and fromuid=#{fromuid}</if>
+            <if test="touid != null">and touid=#{touid}</if>
+        </where>
+    </delete>
+
+    <update id="updateContact" parameterType="contact">
+        update contact
+        <set>
+            <choose>
+                <when test="noread != null">noread=#{noread}</when>
+                <otherwise>noread=noread+1</otherwise>
+            </choose>
+        </set>
+        <where>
+            <if test="cid != null">cid=#{cid}</if>
+            <if test="fromuid != null">and fromuid=#{fromuid}</if>
+            <if test="touid != null">and touid=#{touid}</if>
+        </where>
+    </update>
+
+    <select id="queryContact" parameterType="map" resultType="contact">
+        select * from contact
+        <where>
+            <if test="cid != null">cid=#{cid}</if>
+            <if test="fromuid != null">and fromuid=#{fromuid}</if>
+            <if test="touid != null">and touid=#{touid}</if>
+        </where>
+    </select>
+
+    <select id="querynoread" parameterType="map" resultType="int">
+        select IFNULL(sum(noread),0) from contact where fromuid=#{fromuid}
+    </select>
+
+</mapper>

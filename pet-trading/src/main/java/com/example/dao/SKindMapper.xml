@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.SKindMapper">
+
+    <delete id="deleteSKind" parameterType="map">
+        delete from skind
+        <where>
+            <if test="skid != null">skid=#{skid}</if>
+            <if test="bkid != null">bkid=#{bkid}</if>
+        </where>
+    </delete>
+
+    <update id="updateSKind" parameterType="skind">
+        update skind
+        <set>
+            <if test="savatar != null">savatar=#{savatar},</if>
+            <if test="skindname != null">skindname=#{skindname},</if>
+            <if test="bkid != null">bkid=#{bkid}</if>
+        </set>
+        where skid=#{skid}
+    </update>
+
+    <select id="queryAllSKind" parameterType="map" resultType="skind">
+        select * from skind
+        <where>
+            <if test="skid != null">skid=#{skid}</if>
+            <if test="bkid != null">and bkid=#{bkid}</if>
+            <if test="skindname">and skindname=#{skindname}</if>
+        </where>
+        order by skid
+    </select>
+</mapper>

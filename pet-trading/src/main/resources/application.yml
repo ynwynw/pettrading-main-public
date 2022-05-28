@@ -1,0 +1,42 @@
+server:
+  port: 8081
+
+spring:
+#  配置数据库信息
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/pet?serverTimezone=Asia/Shanghai&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  配置上传的图片大小信息
+  servlet:
+    multipart:
+      enabled: true
+#     上传文件总的最大值（限制上传的多个文件的总大小）
+      max-request-size: 50MB
+#      单个文件的最大值（限制单个文件的最大值）
+      max-file-size: 10MB
+# 统一配置时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+#static
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${me.upload.path}
+#  jpa:
+#    database: MYSQL
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL5Dialect
+#    hibernate:
+#      ddl-auto: update
+#      naming:
+#        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+mybatis:
+  type-aliases-package: com.example.domain
+#  mapper-locations: classpath:mybatis/mapper/*.xml

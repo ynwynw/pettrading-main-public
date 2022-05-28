@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.BKindMapper">
+    <update id="updateBKind" parameterType="bkind">
+        update bkind
+        <set>
+            <if test="bavatar != null">bavatar=#{avatar},</if>
+            <if test="bkindname != null">bkindname=#{bkindname}</if>
+        </set>
+        where bkid=#{bkid}
+    </update>
+
+    <resultMap id="bkindnameMap" type="java.util.HashMap">
+        <result column="bkindname" property="bkindname"/>
+    </resultMap>
+
+    <select id="queryBKindname" resultMap="bkindnameMap">
+        select bkindname from bkind
+    </select>
+
+    <select id="queryBKindandSKind" parameterType="map" resultMap="bkindMap">
+        select * from bkind b left outer join skind s on b.bkid=s.bkid
+        <where>
+            <if test="bkid != null">b.bkid=#{bkid}</if>
+            <if test="bkindname != null">and b.bkindname=#{bkindname}</if>
+        </where>
+        order by b.bkid
+    </select>
+    
+    <resultMap id="bkindMap" type="bkind">
+        <id property="bkid" column="bkid"/>
+        <result property="bkindname" column="bkindname"/>
+        <collection property="skind" ofType="skind">
+            <id property="skid" column="skid"/>
+            <result property="skindname" column="skindname"/>
+        </collection>
+    </resultMap>
+</mapper>

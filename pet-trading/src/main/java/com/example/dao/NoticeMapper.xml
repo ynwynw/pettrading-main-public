@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.NoticeMapper">
+
+    <delete id="deleteNotice" parameterType="map">
+        delete from notice
+        <where>
+            <if test="fromuid != null">fromuid=#{fromuid}</if>
+            <if test="touid != null">and touid=#{touid}</if>
+            <if test="nid != null">and nid=#{nid}</if>
+        </where>
+    </delete>
+
+<!--  查找聊天记录  -->
+    <select id="querynotice" parameterType="map" resultType="notice">
+        select * from notice
+        <where>
+            <choose>
+                <when test="fromuid != null and touid != null">
+                    fromuid=#{fromuid} and touid=#{touid} or fromuid=#{touid} and touid=#{fromuid}
+                </when>
+                <otherwise>
+                    <if test="fromuid != null">fromuid=#{fromuid}</if>
+                    <if test="touid != null">and touid=#{touid}</if>
+                    <if test="nid != null">and nid=#{nid}</if>
+                    <if test="isread != null">and isread=#{isread}</if>
+                </otherwise>
+            </choose>
+        </where>
+        order by date
+    </select>
+
+<!--    查找一个用户的所有聊天记录-->
+    <select id="queryusernotice" parameterType="map" resultType="notice">
+        select * from notice where fromuid=#{uid} or touid=#{uid} order by date
+    </select>
+
+<!--    查找信息数量-->
+    <select id="queryisread" parameterType="map" resultType="int">
+        select count(*) from notice where touid=#{touid} and isread=#{isread}
+    </select>
+</mapper>

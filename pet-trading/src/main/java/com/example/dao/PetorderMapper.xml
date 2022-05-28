@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.PetorderMapper">
+
+    <delete id="deletepetorder" parameterType="map">
+        delete from petorder
+        <where>
+            <if test="poid != null">poid=#{poid}</if>
+            <if test="uid != null">and uid=#{uid}</if>
+        </where>
+    </delete>
+
+    <update id="updatepetorder" parameterType="petorder">
+        update petorder
+        <set>
+            <if test="date != null">date=#{date},</if>
+            <if test="pid != null">pid=#{pid},</if>
+            <if test="uid != null">uid=#{uid}</if>
+            <if test="address != null">address=#{address},</if>
+            <if test="phone != null">phone=#{phone},</if>
+            <if test="recipientname != null">recipientname=#{recipientname},</if>
+            <if test="postatu != null">postatu=#{postatu},</if>
+            <if test="price != null">price=#{price},</if>
+            <if test="newphone != null">newphone=#{newphone},</if>
+            <if test="newaddress != null">newaddress=#{newaddress},</if>
+            <if test="newrecipientname != null">newrecipientname=#{newrecipientname}</if>
+        </set>
+        where poid=#{poid}
+    </update>
+
+    <resultMap id="petorderMap" type="petorder">
+        <id property="poid" column="poid"/>
+        <result property="date" column="date"/>
+        <result property="address" column="address"/>
+        <result property="phone" column="phone"/>
+        <result property="recipientname" column="recipientname"/>
+        <result property="newaddress" column="newaddress"/>
+        <result property="newphone" column="newphone"/>
+        <result property="newrecipientname" column="newrecipientname"/>
+        <result property="postatu" column="postatu"/>
+        <result property="uid" column="uid"/>
+        <result property="pid" column="pid"/>
+        <result property="puid" column="puid"/>
+        <result property="price" column="price"/>
+        <association property="pet" javaType="pet">
+            <id property="pid" column="pid"></id>
+            <result property="petname" column="petname"></result>
+            <result property="price" column="petprice"/>
+            <result property="pk" column="pk"></result>
+            <collection property="photo" ofType="photo">
+                <id property="ppid" column="ppid"/>
+                <result property="url" column="url"/>
+            </collection>
+        </association>
+        <association property="user" javaType="user">
+            <id property="uid" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="avatar" column="avatar"/>
+        </association>
+    </resultMap>
+
+    <select id="querypetorder" parameterType="map" resultMap="petorderMap">
+        select *
+        from petorder po,pet p,user u,photo ph
+        <where>
+            po.pid = p.pid and u.uid = po.uid and ph.pid=p.pid
+            <if test="uid != null">and po.uid=#{uid}</if>
+            <if test="pid != null">and po.pid=#{pid}</if>
+            <if test="poid != null">and po.poid=#{poid}</if>
+            <if test="recipientname != null">and po.recipientname=#{recipientname}</if>
+            <if test="address != null">and po.address LIKE "%"#{address}"%"</if>
+            <if test="phone != null">and po.phone=#{phone}</if>
+            <if test="date != null">and DATE_FORMAT(po.date,'%Y-%m-%d')=#{date}</if>
+            <if test="postatu != null">and postatu=#{postatu}</if>
+        </where>
+        order by po.poid desc
+        <if test="min != null">
+            limit #{min},#{max}
+        </if>
+    </select>
+
+    <select id="querypetorderpage" parameterType="map" resultMap="petorderMap">
+        select *
+        from
+        (select po.poid,po.date,po.address,po.phone,recipientname,newaddress,newphone,newrecipientname,postatu,po.uid,po.pid,po.puid,po.price,p.petname,p.price as petprice,p.pk,u.username,u.avatar
+        from petorder po,pet p,user u
+        <where>
+            po.pid = p.pid and u.uid = po.uid
+            <if test="uid != null">and po.uid=#{uid}</if>
+            <if test="pid != null">and po.pid=#{pid}</if>
+            <if test="poid != null">and po.poid=#{poid}</if>
+            <if test="recipientname != null">and po.recipientname=#{recipientname}</if>
+            <if test="address != null">and po.address LIKE "%"#{address}"%"</if>
+            <if test="phone != null">and po.phone=#{phone}</if>
+            <if test="date != null">and DATE_FORMAT(po.date,'%Y-%m-%d')=#{date}</if>
+            <if test="postatu != null">and postatu=#{postatu}</if>
+        </where>
+        order by po.poid
+        <if test="min != null">
+            limit #{min},#{max}
+        </if>) peto
+        left outer join photo ph on peto.pid=ph.pid
+    </select>
+
+    <select id="countpetorder" parameterType="map" resultType="int">
+        select count(*) from petorder po
+        <where>
+            <if test="uid != null">and po.uid=#{uid}</if>
+            <if test="pid != null">and po.pid=#{pid}</if>
+            <if test="poid != null">and po.poid=#{poid}</if>
+            <if test="recipientname != null">and po.recipientname=#{recipientname}</if>
+            <if test="address != null">and po.address LIKE "%"#{address}"%"</if>
+            <if test="phone != null">and po.phone=#{phone}</if>
+            <if test="date != null">and DATE_FORMAT(po.date,'%Y-%m-%d')=#{date}</if>
+            <if test="postatu != null">and postatu=#{postatu}</if>
+        </where>
+    </select>
+</mapper>

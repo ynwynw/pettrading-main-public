@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.UserMapper">
+    <insert id="addUser" parameterType="user">
+        insert into user (avatar,sex,username,password,telphone,realname,idcard,type) values (#{avatar},#{sex},#{username},#{password},#{telphone},#{realname},#{idcard},#{type})
+    </insert>
+
+    <select id="queryUser" parameterType="map" resultType="user">
+        select * from user
+        <where>
+            <if test="uid != null">uid=#{uid}</if>
+            <if test="username != null">or username=#{username}</if>
+            <if test="telphone != null">or telphone=#{telphone}</if>
+            <if test="idcard != null">or idcard=#{idcard}</if>
+        </where>
+    </select>
+
+    <delete id="deleteUser" parameterType="map">
+        delete from user where uid=#{uid}
+    </delete>
+
+    <select id="queryAllUser" parameterType="map" resultType="user">
+        select * from user where type=1 order by uid
+        <if test="min != null">
+            limit #{min},#{max}
+        </if>
+    </select>
+
+    <select id="countuser" parameterType="map" resultType="int">
+        select count(*) from user
+        <where>
+            type=1
+            <if test="uid != null">and uid=#{uid}</if>
+            <if test="username != null">and username=#{username}</if>
+            <if test="realname != null">and realname=#{realname}</if>
+            <if test="idcard != null">and idcard=#{idcard}</if>
+            <if test="telphone != null">and telphone=#{telphone}</if>
+        </where>
+    </select>
+
+    <update id="updateUser" parameterType="user">
+        update user
+        <set>
+            <if test="address != null">address=#{address},</if>
+            <if test="avatar != null">avatar=#{avatar},</if>
+            <if test="password != null">password=#{password},</if>
+            <if test="realname != null">realname=#{realname},</if>
+            <if test="idcard != null">idcard=#{idcard},</if>
+            <if test="sex != null">sex=#{sex},</if>
+            <if test="username != null">username=#{username},</if>
+            <if test="email != null">email=#{email}</if>
+            <if test="telphone != null">telphone=#{telphone}</if>
+            <if test="wechat != null">wechat=#{wechat}</if>
+        </set>
+        where uid=#{uid}
+    </update>
+
+    <resultMap id="contactusermap" type="contactuser">
+        <id property="uid" column="uid"/>
+        <result property="cid" column="cid"/>
+        <result property="username" column="username"/>
+        <result property="avatar" column="avatar"/>
+        <result property="noread" column="noread"/>
+    </resultMap>
+
+    <select id="querycontactuser" resultMap="contactusermap">
+        select tu.uid,tu.avatar,tu.username,c.noread,c.cid
+        from user fu, user tu, contact c
+        where c.fromuid=#{uid} and fu.uid=c.fromuid and c.touid=tu.uid
+        order by c.cid
+    </select>
+
+    <select id="queryuserby" parameterType="map" resultType="user">
+        select * from user
+        <where>
+            type = 1
+            <if test="uid != null">and uid=#{uid}</if>
+            <if test="username != null">and username=#{username}</if>
+            <if test="realname != null">and realname=#{realname}</if>
+            <if test="idcard != null">and idcard=#{idcard}</if>
+            <if test="telphone != null">and telphone=#{telphone}</if>
+        </where>
+        order by uid
+    </select>
+</mapper>
