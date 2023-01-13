@@ -2,7 +2,11 @@
 
 **需要完整代码可以加qq  931708230 或者加微信  ynwwxid**
 
-#Java毕业设计#程序员#编程#个人博客系统#后台管理系统#springboot#mybatis#源代码
+**博客地址：[https://blog.csdn.net/2303_76227485/article/details/128647426](https://blog.csdn.net/2303_76227485/article/details/128647426)**
+
+**视频演示：[https://www.bilibili.com/video/BV1CP4y1i7RX/](https://www.bilibili.com/video/BV1CP4y1i7RX/)**
+
+**毕业设计所有选题地址：[https://github.com/ynwynw/allProject](https://github.com/ynwynw/allProject)**
 
 ## 基于springboot+vue的宠物交易/领养系统 (源代码+数据库)
 
